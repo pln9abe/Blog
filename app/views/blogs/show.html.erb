@@ -1,0 +1,7 @@
+<h1>Show Blogs</h1>
+
+<h3><%= @blog.title %></h3>
+
+<p><%= simple_format(@blog.body) %></p>
+
+<%= link_to "Back", blogs_path, class: "btn btn-sm btn-secondary" %>

@@ -1,0 +1,34 @@
+<h1> Blogs </h1>
+<br>
+<% if current_user %>
+<%= link_to "New Blog Post", new_blog_path, class: "btn btn-sm btn-primary" %>
+<%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger" %>
+<% else %>
+<%= link_to "Sign In", new_user_session_path, class: "btn btn-sm btn-primary"%>
+<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-primary"%>
+<% end %>
+<br><br>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @blogs.each do |blog| %>
+      <td><%= blog.title %></td>
+      <td><%= blog.body.first(50).concat("...") %></td>
+      <td><%= link_to "Show", blog_path(blog), class: "btn btn-sm btn-primary" %>
+          <% if current_user %>
+            <%= link_to "Edit", edit_blog_path(blog), class: "btn btn-sm btn-warning" %>
+            <%= link_to "Delete", blog_path(blog), method: :delete,
+                data: {confirm: "Are you sure you want to delete this blog?"},
+                class:"btn btn-sm btn-danger" %>
+          <%end %>
+    </tr>
+   <% end %>   
+  </tbody>
+</table>

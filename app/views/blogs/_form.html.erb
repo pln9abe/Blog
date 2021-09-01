@@ -1,0 +1,22 @@
+<%= form_for @blog do |f| %>
+ <div class="text-label">Title</div>
+ <div class="text-field">
+   <%= f.text_field :title, required: true, class: "form-control" %>
+ </div>
+ <% @blog.errors.full_messages_for(:title).each do |message| %>
+    <div><%= message %></div>
+ <% end %>
+
+ <div class="text-label">Body</div>
+ <div class="text-field">
+   <%= f.text_area :body, required: true, class: "form-control", rows: "30" %>
+ </div>
+ <% @blog.errors.full_messages_for(:body).each do |message| %>
+    <div><%= message %></div>
+ <% end %>
+
+ <br>
+ <%= f.submit "Save Blog", class: "btn btn-sm btn-primary" %>
+ <%= link_to "Cancel", blogs_path, class: "btn btn-sm btn-secondary" %>
+
+<% end %>
