@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
  before_action :set_blog, only: [:destroy, :show, :edit, :update]
-
+ before_action :authenticate_user!, except: [:show, :index]
  def index
    @blogs = Blog.all
  end
@@ -14,6 +14,8 @@ class BlogsController < ApplicationController
 
  def create
    @blog = Blog.new(blog_params)
+   @blog.user_id = current_user.id
+   @blog.author = current_user.email
    if @blog.save
       redirect_to blogs_path
    else
