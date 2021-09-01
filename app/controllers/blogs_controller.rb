@@ -15,7 +15,7 @@ class BlogsController < ApplicationController
  def create
    @blog = Blog.new(blog_params)
    @blog.user_id = current_user.id
-   @blog.author = current_user.email
+   @blog.author = current_user.username
    if @blog.save
       redirect_to blogs_path
    else
