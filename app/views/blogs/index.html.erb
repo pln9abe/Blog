@@ -26,14 +26,6 @@
       <td><%= blog.author %></td>
       <td><%= blog.body.first(50).concat("...") %></td>
       <td><%= link_to "Show", blog_path(blog), class: "btn btn-sm btn-primary" %>
-          <% if current_user %>
-              <% if blog.author == current_user.username %>
-                <%= link_to "Edit", edit_blog_path(blog), class: "btn btn-sm btn-warning" %>
-                <%= link_to "Delete", blog_path(blog), method: :delete,
-                    data: {confirm: "Are you sure you want to delete this blog?"},
-                    class:"btn btn-sm btn-danger" %>
-              <%end %>
-          <%end %>
     </tr>
    <% end %>   
   </tbody>
