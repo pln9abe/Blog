@@ -1,11 +1,14 @@
 class BlogsController < ApplicationController
  before_action :set_blog, only: [:destroy, :show, :edit, :update]
  before_action :authenticate_user!, except: [:show, :index]
+
  def index
    @blogs = Blog.all
  end
 
  def show  
+    @comment = Comment.new
+    @comments = @blog.comments
  end
 
  def new

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: "blogs#index"
-  resources :blogs
+
+  devise_for :users
+  resources :blogs do
+    post 'comments', to: 'comments#create'
+  end
 end
