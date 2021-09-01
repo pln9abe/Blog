@@ -1,10 +1,11 @@
 <h1> Blogs </h1>
 <br>
 <% if current_user %>
-<p>You are signed in as <%= current_user.username %>!</p>
+<p>Hello <%= current_user.username %>!</p>
 <%= link_to "New Blog Post", new_blog_path, class: "btn btn-sm btn-primary" %>
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger" %>
 <% else %>
+  <p>You are not signed in!</p>
 <%= link_to "Sign In", new_user_session_path, class: "btn btn-sm btn-primary"%>
 <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-primary"%>
 <% end %>
@@ -13,6 +14,7 @@
   <thead class="table-dark">
     <tr>
       <th>Title</th>
+      <th>Author</th>
       <th>Body</th>
       <th>Actions</th>
     </tr>
@@ -21,6 +23,7 @@
     <tr>
       <% @blogs.each do |blog| %>
       <td><%= blog.title %></td>
+      <td><%= blog.author %></td>
       <td><%= blog.body.first(50).concat("...") %></td>
       <td><%= link_to "Show", blog_path(blog), class: "btn btn-sm btn-primary" %>
           <% if current_user %>
