@@ -1,0 +1,4 @@
+<%= form_for [commentable, Comment.new] do |f| %>
+  <%= f.text_field :body, required: true,  class: "form-control", id:"space" %>
+  <%= f.submit "Comment" ,class: "btn btn-sm btn-primary", id:"space"%>
+<% end %>
