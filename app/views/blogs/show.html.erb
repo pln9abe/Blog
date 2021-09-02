@@ -1,32 +1,31 @@
-<h1>Show Blogs</h1>
-
-<h3><%= @blog.title %></h3>
-<h5>Author: <%= @blog.author %></h5>
-
+<center>
+  <h3><%= @blog.title %></h3>
+  <h5>Author: <%= @blog.author %></h5>
+</center>
 <p><%= simple_format(@blog.body) %></p>
 
-<%= link_to "Back", blogs_path, class: "btn btn-sm btn-secondary" %>
+<%= link_to "Back", blogs_path, class: "btn btn-sm btn-secondary", id: "space" %>
+
   <% if current_user %>
     <% if @blog.author == current_user.username %>
-      <%= link_to "Edit", edit_blog_path(@blog), class: "btn btn-sm btn-warning" %>
+      <%= link_to "Edit", edit_blog_path(@blog), class: "btn btn-sm btn-warning", id: "space" %>
       <%= link_to "Delete", blog_path(@blog), method: :delete,
           data: {confirm: "Are you sure you want to delete this blog?"},
-          class:"btn btn-sm btn-danger" %>
-    <%end %>
-    <br><br>
-    <%= form_with model: [@blog, @comment] do |f| %>
-      <%= f.text_field :body, required: true,  class: "form-control" %>
-      <br>
-      <%= f.submit "Comment" ,class: "btn btn-sm btn-primary"%>
+          class:"btn btn-sm btn-danger", id: "space" %>
     <% end %>
-    <br>
-    <br>
+    
+    <%# <%= render partial: "comments/form", locals: {commentable: @blogs} %1> %>
+
+    <%= form_with model: [@blog, @comment] do |f| %>
+    <%= f.text_field :body, required: true,  class: "form-control", id:"space" %>
+    <%= f.submit "Comment" ,class: "btn btn-sm btn-primary", id:"space"%>
+    <% end %>
     <% @comments.each do |comment| %>
       [<%= comment.created_at.strftime("%l:%M %p") %>]
       <%= comment.user.username %>: <%= comment.body %>
       <hr>
-      <br />
     <% end %>
+
   <% else %>
-    <p>Sign in to add comments!</p>
+<p>Sign in to add comments!</p>
 <% end %>
