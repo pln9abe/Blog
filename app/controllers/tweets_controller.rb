@@ -2,9 +2,12 @@ class TweetsController < ApplicationController
    before_action :set_tweet, only: [:destroy, :show, :edit, :update]
    def index
      @tweets = Tweet.all
-     @comment = Comment.new
    end
 
+   def show
+     @comment = Comment.new
+   end
+   
    def new
       @tweet = Tweet.new
    end
