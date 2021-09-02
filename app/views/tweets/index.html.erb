@@ -17,12 +17,12 @@
       <p>Comments</p>
       </strong>
 
-      <%# <%= render partial: "comments/form", locals: {commentable: @tweets} %1> %>
-
       <% tweet.comments.each do |comment| %>
         <%= comment.user.username %>
         <%= comment.body %>
+
       <% end %>
+      <p><%= link_to "Comment", tweet_path(tweet), class: "btn btn-sm btn-secondary" %></p>
     </div>
   <% end %>
 </div>

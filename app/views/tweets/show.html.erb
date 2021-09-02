@@ -1,0 +1,17 @@
+<div class="tweet" id="space">
+  <strong>
+    <i><h3>@<%= @tweet.user.username %></h3></i>
+  </strong>
+  <div class="time">
+    [<%= @tweet.created_at.strftime("%b-%d-%y%t%I:%M %p") %>]
+  </div>
+  <p><%= @tweet.body %></p>
+</div>
+
+<%= link_to "Back", tweets_path, class: "btn btn-sm btn-secondary", id: "space" %>
+
+<%= form_with model: [@tweet, @comment] do |f| %>
+<%= f.text_field :body, required: true,  class: "form-control", id:"space" %>
+<%= f.submit "Comment" ,class: "btn btn-sm btn-primary", id:"space"%>
+
+<% end %>

@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-   before_action :set_blog
 
    def create
       @comment = @commentable.comments.new(comment_params)
@@ -11,9 +10,5 @@ class CommentsController < ApplicationController
    private
    def comment_params
       params.require(:comment).permit(:body)
-   end
-
-   def set_blog
-      @blog = Blog.find(params[:blog_id])
    end
 end
