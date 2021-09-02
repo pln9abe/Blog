@@ -2,4 +2,27 @@
   <% if current_user %>
     <%= link_to "Create New Tweet", new_tweet_path, class: "btn btn-sm btn-primary" %>
   <% end %>
+
+  <% @tweets.each do |tweet| %>
+    <div class="tweet">
+      <strong>
+        <i>@<%= tweet.user.username %></i>
+      </strong>
+      <div class="time">
+        [<%= tweet.created_at.strftime("%b-%d-%y%t%I:%M %p") %>]
+      </div>
+      <p><%= tweet.body %></p>
+
+      <strong>
+      <p>Comments</p>
+      </strong>
+
+      <%# <%= render partial: "comments/form", locals: {commentable: @tweets} %1> %>
+
+      <% tweet.comments.each do |comment| %>
+        <%= comment.user.username %>
+        <%= comment.body %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
