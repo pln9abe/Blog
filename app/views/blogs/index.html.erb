@@ -1,32 +1,26 @@
-<h1> Blogs </h1>
-<br>
-<% if current_user %>
-<p>Hello <%= current_user.username %>!</p>
-<%= link_to "New Blog Post", new_blog_path, class: "btn btn-sm btn-primary" %>
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger" %>
-<% else %>
-  <p>You are not signed in!</p>
-<%= link_to "Sign In", new_user_session_path, class: "btn btn-sm btn-primary"%>
-<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm btn-primary"%>
-<% end %>
-<br><br>
-<table class="table table-striped">
-  <thead class="table-dark">
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Body</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
+<div class="whole-index">
+  <% if current_user %>
+    <%= link_to "New Blog Post", new_blog_path, class: "btn btn-sm btn-primary" %>
+  <% end %>
+
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Body</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
       <% @blogs.each do |blog| %>
-      <td><%= blog.title %></td>
-      <td><%= blog.author %></td>
-      <td><%= blog.body.first(50).concat("...") %></td>
-      <td><%= link_to "Show", blog_path(blog), class: "btn btn-sm btn-primary" %>
-    </tr>
-   <% end %>   
-  </tbody>
-</table>
+        <tr>
+          <td><%= blog.title %></td>
+          <td><%= blog.author %></td>
+          <td><%= teaser(blog) %></td>
+          <td><%= link_to "Show", blog_path(blog), class: "btn btn-sm btn-primary" %>
+        </tr>
+      <% end %>   
+    </tbody>
+  </table>
+5</div>
