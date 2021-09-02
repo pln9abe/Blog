@@ -1,0 +1,10 @@
+<%= form_for @tweet do |f| %>
+
+ <div id="space">
+   <%= f.text_field :body, required: true, placeholder: "What's on your mind?", class: "form-control" %>
+ </div>
+
+ <%= f.submit "Tweet", class: "btn btn-sm btn-primary" %>
+ <%= link_to "Cancel", tweets_path(@tweet), class: "btn btn-sm btn-secondary" %>
+
+<% end %>

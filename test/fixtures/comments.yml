@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: MyText
+  commentable_type: MyString
+  commentable_id: 1
   user: one
-  blog: one
+  body: MyText
 
 two:
-  body: MyText
+  commentable_type: MyString
+  commentable_id: 1
   user: two
-  blog: two
+  body: MyText

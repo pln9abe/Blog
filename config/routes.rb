@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :blogs do
-    post 'comments', to: 'comments#create'
+    # post 'comments', to: 'comments#create'
+    resources :comments, module: :blogs
+  end
+
+  resources :tweets do
+    resources :comments, module: :tweets
+    # post 'comments', to: 'comments#create'
   end
 end
