@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   resources :blogs do
     post 'comments', to: 'comments#create'
   end
+
+  resources :tweets do
+    post 'comments', to: 'comments#create'
+  end
 end
