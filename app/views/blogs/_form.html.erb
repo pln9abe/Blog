@@ -9,7 +9,7 @@
 
  <div class="text-label">Body</div>
  <div class="text-field">
-   <%= f.text_area :body, required: true, class: "form-control", rows: "30" %>
+   <%= f.text_area :body, required: true, class: "form-control", rows: "15" %>
  </div>
  <% @blog.errors.full_messages_for(:body).each do |message| %>
     <div><%= message %></div>

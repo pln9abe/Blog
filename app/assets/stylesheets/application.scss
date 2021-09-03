@@ -51,14 +51,13 @@ nav a:hover{
   margin-top: -40px;
 }
 
-#space {
-  margin-bottom:15px;
+.spacer {
+  margin-bottom: 15px;
 }
 
 .tweet {
   margin-top: 20px;
-  border-bottom-style: dotted;
-  border-width: 1;
+  border-bottom: 1px solid black;
 }
 
 .time {
@@ -67,4 +66,9 @@ nav a:hover{
 
 .tweet p {
   margin-top: 10px;
+}
+
+.btn {
+  background-color: none;
+  border-color: black
 }
