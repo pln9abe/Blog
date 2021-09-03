@@ -8,27 +8,11 @@
 
   <% @tweets.each do |tweet| %>
     <div class="tweet">
-      <strong>
-        <i>@<%= tweet.user.username %></i>
-      </strong>
-
-      <div class="time">
-        <%= tweet.created_at.strftime("%b-%d-%y%t%I:%M %p") %>
-      </div>
-      <p><%= tweet.body %></p>
-
-      <strong>
-        <h5>Comments</h5>
-      </strong>
-
-      <% tweet.comments.each do |comment| %>
-        <div>
-          <strong><%= comment.user.username %>: </strong>
-          <%= comment.body %>
-        </div>
-      <% end %>
-
-      <p><%= link_to "Comment", tweet_path(tweet), class: "btn btn-sm border-dark" %></p>
+      <%= render 'tweets', tweet: tweet %>
+      <%= render 'comment', tweet: tweet %>
+      <%= link_to 'Comment', tweet_path(tweet),
+        class: "btn btn-sm border-dark spacer"
+      %>
     </div>
   <% end %>
 </div>
