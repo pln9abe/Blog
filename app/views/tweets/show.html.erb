@@ -1,4 +1,4 @@
-<div class="tweet" id="space">
+<div class="tweet spacer">
   <strong>
     <i><h3>@<%= @tweet.user.username %></h3></i>
   </strong>
@@ -8,10 +8,9 @@
   <p><%= @tweet.body %></p>
 </div>
 
-<%= link_to "Back", tweets_path, class: "btn btn-sm btn-secondary", id: "space" %>
+<%= link_to "Back", tweets_path, class: "btn btn-sm btn-secondary spacer" %>
 
 <%= form_with model: [@tweet, @comment] do |f| %>
-<%= f.text_field :body, required: true,  class: "form-control", id:"space" %>
-<%= f.submit "Comment" ,class: "btn btn-sm btn-primary", id:"space"%>
-
+  <%= f.text_field :body, required: true, placeholder: "Add a Comment", class: "form-control spacer" %>
+  <%= f.submit "Comment" ,class: "btn btn-sm btn-primary spacer"%>
 <% end %>
