@@ -1,0 +1,10 @@
+<strong>
+  <h5>Comments</h5>
+</strong>
+
+<% tweet.comments.each do |comment| %>
+  <div class="line">
+    <strong><%= comment.user.username %>: </strong>
+    <%= comment.body %>
+  </div>
+<% end %>

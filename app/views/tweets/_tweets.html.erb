@@ -1,0 +1,16 @@
+<strong>
+  <i>
+    <h3>
+      @<%= tweet.user.username %>
+    </h3>
+  </i>
+</strong>
+
+<div class="time">
+  <%= tweet.created_at.strftime("%b-%d %A %l:%M %P") %>
+</div>
+
+<div class="tweet-body">
+  <p><%= tweet.body %></p>
+</div>
+
