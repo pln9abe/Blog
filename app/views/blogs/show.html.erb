@@ -14,10 +14,8 @@
           class:"btn btn-sm btn-danger", id: "space" %>
     <% end %>
     
-    <%# <%= render partial: "comments/form", locals: {commentable: @blogs} %1> %>
-
     <%= form_with model: [@blog, @comment] do |f| %>
-    <%= f.text_field :body, required: true,  class: "form-control", id:"space" %>
+    <%= f.text_field :body, required: true, placeholder: "Add a Comment",  class: "form-control", id:"space" %>
     <%= f.submit "Comment" ,class: "btn btn-sm btn-primary", id:"space"%>
     <% end %>
     <% @comments.each do |comment| %>
