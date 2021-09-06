@@ -1,14 +1,14 @@
 class BlogsController < ApplicationController
- before_action :set_blog, only: [:destroy, :show, :edit, :update]
- before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_blog, only: [:destroy, :show, :edit, :update]
+  before_action :authenticate_user!, except: [:show, :index]
 
  def index
    @blogs = Blog.all
  end
 
  def show  
-    @comment = Comment.new
-    @comments = @blog.comments
+   @comment = Comment.new
+   @comments = @blog.comments
  end
 
  def new
@@ -30,25 +30,25 @@ class BlogsController < ApplicationController
  end
 
  def update
-    if @blog.update(blog_params)
-       redirect_to blogs_path
-    else
-       render :edit
-    end
+   if @blog.update(blog_params)
+     redirect_to blogs_pat
+   else
+     render :edit
+   end
  end
 
  def destroy
-    if @blog.destroy
-       redirect_to blogs_path
-    end
+   if @blog.destroy
+     redirect_to blogs_path
+   end
  end
 
  private
  def blog_params
-    params.require(:blog).permit(:title, :body)
+   params.require(:blog).permit(:title, :body)
  end
 
  def set_blog
-    @blog = Blog.find(params[:id])
+   @blog = Blog.find(params[:id])
  end
 end
