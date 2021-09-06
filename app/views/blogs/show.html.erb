@@ -4,26 +4,36 @@
 </center>
 <p><%= simple_format(@blog.body) %></p>
 
-<%= link_to "Back", blogs_path, class: "btn btn-sm btn-secondary", id: "space" %>
+<%= link_to "Back", blogs_path,
+  class: "btn btn-sm btn-secondary spacer"
+%>
 
-  <% if current_user %>
-    <% if @blog.author == current_user.username %>
-      <%= link_to "Edit", edit_blog_path(@blog), class: "btn btn-sm btn-warning", id: "space" %>
-      <%= link_to "Delete", blog_path(@blog), method: :delete,
-          data: {confirm: "Are you sure you want to delete this blog?"},
-          class:"btn btn-sm btn-danger", id: "space" %>
-    <% end %>
-    
-    <%= form_with model: [@blog, @comment] do |f| %>
-    <%= f.text_field :body, required: true, placeholder: "Add a Comment",  class: "form-control", id:"space" %>
-    <%= f.submit "Comment" ,class: "btn btn-sm btn-primary", id:"space"%>
-    <% end %>
-    <% @comments.each do |comment| %>
-      [<%= comment.created_at.strftime("%l:%M %p") %>]
-      <%= comment.user.username %>: <%= comment.body %>
-      <hr>
-    <% end %>
+<% if current_user %>
+  <% if @blog.author == current_user.username %>
+    <%= link_to "Edit", edit_blog_path(@blog),
+      class: "btn btn-sm btn-warning spacer"
+    %>
+    <%= link_to "Delete", blog_path(@blog), method: :delete,
+        data: {confirm: "Are you sure you want to delete this blog?"},
+        class:"btn btn-sm btn-danger spacer"%>
+  <% end %>
+  
+  <%= form_with model: [@blog, @comment] do |f| %>
+    <%= f.text_field :body, required: true,
+      placeholder: "Add a Comment",
+      class: "form-control spacer"
+    %>
+    <%= f.submit "Comment",
+      class: "btn btn-sm btn-primary spacer"
+    %>
+  <% end %>
 
-  <% else %>
-<p>Sign in to add comments!</p>
+  <% @comments.each do |comment| %>
+    [<%= comment.created_at.strftime("%l:%M %p") %>]
+    <%= comment.user.username %>: <%= comment.body %>
+    <hr>
+  <% end %>
+
+<% else %>
+  <p>Sign in to add comments!</p>
 <% end %>
