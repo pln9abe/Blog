@@ -16,7 +16,7 @@
       <% @blogs.each do |blog| %>
         <tr>
           <td><%= blog.title %></td>
-          <td><%= blog.author %></td>
+          <td><%= blog.user.username %></td>
           <td><%= teaser(blog) %></td>
           <td><%= link_to "Show", blog_path(blog), class: "btn btn-sm btn-primary" %>
         </tr>
