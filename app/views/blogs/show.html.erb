@@ -15,7 +15,8 @@
     %>
     <%= link_to "Delete", blog_path(@blog), method: :delete,
         data: {confirm: "Are you sure you want to delete this blog?"},
-        class:"btn btn-sm btn-danger spacer"%>
+        class:"btn btn-sm btn-danger spacer"
+    %>
   <% end %>
   
   <%= form_with model: [@blog, @comment] do |f| %>
@@ -31,6 +32,10 @@
   <% @comments.each do |comment| %>
     [<%= comment.created_at.strftime("%l:%M %p") %>]
     <%= comment.user.username %>: <%= comment.body %>
+    <%= link_to "Delete", blog_comment_path(@blog, comment), method: :delete,
+        data: {confirm: "Are you sure you want to delete this comment?"},
+        class:"btn btn-sm btn-danger spacer"
+    %>
     <hr>
   <% end %>
 
